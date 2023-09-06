@@ -1,0 +1,110 @@
+{
+  "StreamConfig": {},
+  "State": {
+    "Running": true,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "RemovalInProgress": false,
+    "Dead": false,
+    "Pid": 45865,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2023-04-08T11:19:52.936953625Z",
+    "FinishedAt": "2023-04-08T11:14:23.493108667Z",
+    "Health": null
+  },
+  "ID": "29d73a50886323e5539fa42b3a8f87343cc7aae6be5eabff99fce200937a8b9a",
+  "Created": "2023-04-08T07:14:39.667983922Z",
+  "Managed": false,
+  "Path": "bash",
+  "Args": [],
+  "Config": {
+    "Hostname": "29d73a508863",
+    "Domainname": "",
+    "User": "",
+    "AttachStdin": false,
+    "AttachStdout": false,
+    "AttachStderr": false,
+    "ExposedPorts": {
+      "80/tcp": {}
+    },
+    "Tty": true,
+    "OpenStdin": true,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    ],
+    "Cmd": [
+      "bash"
+    ],
+    "Image": "ubuntu:latest",
+    "Volumes": null,
+    "WorkingDir": "",
+    "Entrypoint": null,
+    "OnBuild": null,
+    "Labels": {}
+  },
+  "Image": "sha256:d5ca7a4456053674d490803005766890dd19e3f7e789a48737c0d462da531f5d",
+  "NetworkSettings": {
+    "Bridge": "",
+    "SandboxID": "6981573d23c1406b0966024eb966ef8ca26e058357fba29c30e4871aa1876cbc",
+    "HairpinMode": false,
+    "LinkLocalIPv6Address": "",
+    "LinkLocalIPv6PrefixLen": 0,
+    "Networks": {
+      "bridge": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "NetworkID": "7c1ba21bc139615402211f2c48f6b687755fa362bedfa49f7434078b6ed58672",
+        "EndpointID": "86249ac00d91f08cb27f906f6a857abc4fa118fcb1c1ff46f6bbdc4d87de6943",
+        "Gateway": "172.17.0.1",
+        "IPAddress": "172.17.0.2",
+        "IPPrefixLen": 16,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "MacAddress": "02:42:ac:11:00:02",
+        "DriverOpts": null,
+        "IPAMOperational": false
+      }
+    },
+    "Service": null,
+    "Ports": {
+      "80/tcp": [
+        {
+          "HostIp": "0.0.0.0",
+          "HostPort": "80"
+        }
+      ]
+    },
+    "SandboxKey": "/var/run/docker/netns/6981573d23c1",
+    "SecondaryIPAddresses": null,
+    "SecondaryIPv6Addresses": null,
+    "IsAnonymousEndpoint": false,
+    "HasSwarmEndpoint": false
+  },
+  "LogPath": "/var/lib/docker/containers/29d73a50886323e5539fa42b3a8f87343cc7aae6be5eabff99fce200937a8b9a/29d73a50886323e5539fa42b3a8f87343cc7aae6be5eabff99fce200937a8b9a-json.log",
+  "Name": "/linux",
+  "Driver": "overlay2",
+  "OS": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "RestartCount": 0,
+  "HasBeenStartedBefore": true,
+  "HasBeenManuallyStopped": false,
+  "MountPoints": {},
+  "SecretReferences": null,
+  "ConfigReferences": null,
+  "AppArmorProfile": "",
+  "HostnamePath": "/var/lib/docker/containers/29d73a50886323e5539fa42b3a8f87343cc7aae6be5eabff99fce200937a8b9a/hostname",
+  "HostsPath": "/var/lib/docker/containers/29d73a50886323e5539fa42b3a8f87343cc7aae6be5eabff99fce200937a8b9a/hosts",
+  "ShmPath": "",
+  "ResolvConfPath": "/var/lib/docker/containers/29d73a50886323e5539fa42b3a8f87343cc7aae6be5eabff99fce200937a8b9a/resolv.conf",
+  "SeccompProfile": "",
+  "NoNewPrivileges": false,
+  "LocalLogCacheMeta": {
+    "HaveNotifyEnabled": false
+  }
+}

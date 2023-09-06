@@ -1,0 +1,23 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <h2 style="text-align: center;">用户登录</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group" style="position: relative;margin-bottom: 25px">
+                <label>{{ field.label }}</label>
+                {{ field }}
+                <span style="color: red;position: absolute;">{{ field.errors.0 }}</span>
+            </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">登 录</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+fa8428f90b2049b8969452043ec18288
+
+The People's Republic of China
+
+
+/opt/homebrew/Cellar/openjdk/20.0.1/libexec/openjdk.jdk/Contents/Home
+echo $JAVA_HOME
+
+# set hadoop environment
+/opt/homebrew/Cellar/hadoop/3.3.1/
+export HADOOP_HOME=/usr/local/src/hadoop-2.6.5
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+# >>> set binutils environment >>>
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+#export LDFLAGS="-L/opt/homebrew/opt/binutils/lib"
+#export CPPFLAGS="-I/opt/homebrew/opt/binutils/include"
+# <<< end binutils environment <<<
+
+
+C:\Users\li\kerberos\dev
+
+kinit -kt C:\Users\li\kerberos\dev\sjfw_yinzhl56773.keytab sjfw_yinzhl56773
+
+git config --local user.email "repo@example.com"
+
+git config --local --list
+
+git config --local user.email "lijd7016@163.com"
+
+C:\Users\li\kerberos\dev\krb5.ini
+C:\Users\li\kerberos\dev\krb5cache
+
+kinit -kt C:\Users\li\kerberos\dev\sjfw_yinzhl56773.keytab sjfw_yinzhl56773
+
+cd /opt/homebrew/Cellar/hadoop/3.3.1/bin
+./hdfs namenode -format
+
+/Users/li/Drive/opt/hadoop/hadoop-3.3.1/etc/hadoop/hadoop-env.sh
+
+export JAVA_HOME=/Users/li/Drive/opt/java
+export HADOOP_HOME=/Users/li/Drive/opt/hadoop/hadoop-3.3.1/
+
+/Users/li/Drive/opt/hadoop/hadoop-3.3.1/etc/hadoop/core-site.xml
+/Users/li/Drive/opt/hadoop/hadoop-3.3.1/etc/hadoop/hdfs-site.xml
+
+
+/Users/li/Drive/opt/hadoop/hadoop.sh
+
+http://10.238.188.167:8818/root/MMSH/tree/dev
+
+C:\Users\li\pcitc\mmshdsj
+
+git@github.com:user_name/repository_name.git
+
+http://10.238.188.167:8818/root/MMSH.git
+
+git fetch origin dev:dev
+
+
+git config --local lijd7016@163.com "Repo-specific Name"
+git config [user.name](http://user.name) "Repo-specific Name"
+
+
+`git config --local user.email "[repo@example.com](mailto:repo@example.com)"`、`git config user.email "[repo@example.com](mailto:repo@example.com)"`
+
+git config --local user.email lijd7016@163.com
+
+
+git checkout dev
+
+http://192.168.8.11:8818/root/MMSH.git
+
+gictuh-qUmmeb-wehfo6
+
+C:\Users\li\kerberos\dev
+
+kinit -kt C:\krbf\dev\sjfw_yinzhl56773.keytab sjfw_yinzhl56773
+kinit -kt C:\Users\li\kerberos\dev\sjfw_yinzhl56773.keytab sjfw_yinzhl56773
+kinit -kt C:\Users\li\kerberos\dev\sjfw_lijd7016.keytab sjfw_lijd7016
+
+C:\Users\li\kerberos\dev
+
+jdbc:hive2://10.249.137.88:10000/02_logical_layer_002_r_ld_sc;ssl=1;sslTrustStore=C:/Users/li/kerberos/dev/cm-auto-global_truststore.jks;AuthMech=1;KrbRealm=BYHW.HADOOP.COM;KrbHostFQDN=10.249.137.88;KrbServiceName=hive;KrbAuthType=2
+jdbc:hive2://10.249.137.88:10000/02_logical_layer_002_r_ld_sc;ssl=1;sslTrustStore=C:\Users\li\kerberos\dev\cm-autoglobal_truststore.jks;AuthMech=1;KrbRealm=BYHW.HADOOP.COM;KrbHostFQDN=10.249.137.88;KrbServiceName=hive;KrbAuthType=2
+
+
+C:\Users\li\kerberos\dev\cm-auto-global_truststore.jks
+
+
+jdbc:impala://10.249.137.27:7180/02_logical_layer_002_r_ld_sc;ssl=1;sslTrustStore=C:/Users/li/kerberos/dev/cm-auto-global_truststore.jks;AuthMech=1;KrbRealm=BYHW.HADOOP.COM;KrbHostFQDN=10.249.137.27;KrbServiceName=impala;KrbAuthType=2
+
+jdbc:hive2://10.249.137.88:10000/02_logical_layer_002_r_ld_sc;ssl=1;sslTrustStore=C:/Users/li/kerberos/dev/cm-auto-global_truststore.jks;AuthMech=1;KrbRealm=BYHW.HADOOP.COM;KrbHostFQDN=10.249.137.88;KrbServiceName=hive;KrbAuthType=2
+
+/Users/li/Drive/opt/kerberos/sinopec/dev sjfw_lijd7016.keytab
+
+sudo find / -name krb5.conf 2>/dev/null
+
+jdbc:hive2://10.249.137.88:10000/02_logical_layer_002_r_ld_sc;ssl=1;sslTrustStore=/Users/li/Drive/opt/kerberos/sinopec/dev/cm-auto-global_truststore.jks;AuthMech=1;KrbRealm=BYHW.HADOOP.COM;KrbHostFQDN=10.249.137.88;KrbServiceName=hive;KrbAuthType=2
+
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
+-input input_path \
+-output output_path \
+-mapper /path/to/your/script.sh \
+-reducer /path/to/another/script_or_use_/bin/cat_for_no_reduction.sh \
+-file /path/to/your/script.sh
+
+
+hadoop jar $HADOOP_HOME/share/hadoop/tools/lib/hadoop-streaming-*.jar \
+-input input_path \
+-output output_path \
+-mapper /path/to/your/script.sh \
+-reducer /path/to/another/script_or_use_/bin/cat_for_no_reduction.sh \
+-file /path/to/your/script.sh
+
+
+Docker官方文档：https://docs.docker.com/network/
+ubafawoai@outlook.com
+wOySoZ317
+
+https://github.com/edge-1999/entirely
+https://github.com/edge-1999/entirely.git
+git init
+git clone https://github.com/edge-1999/entirely.git
+git config --local user.email "repo@example.com"
+git config user.email "repo@example.com"
+
+git remote add origin https://github.com/edge-1999/program.git
+
+git push origin master
+
+  bug                 0ea2b69 Project Initialization Creation
+  master              353f6a7 提交pandas基础操作笔记
+  python              96f289c [ahead 1] entirely 权限控制 以及更新文件搜诉讼、数据库与文件交互小功能
+  python_github_cloud fab89e9 新增分支并且进行分支规划
+* python_siyuan       fd6a8e6 Merge remote-tracking branch 'origin/python_siyuan' into python_siyuan
+  release             353f6a7 提交pandas基础操作笔记
+
