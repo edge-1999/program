@@ -439,3 +439,109 @@ class FolderOperations(object):
                     print(f'【{file_name}】')
             else:
                 print(f"\n在路径【{self.folder_path}】中未找到含有【{' '.join(search_content)}】内容名称的文件或文件夹")
+
+
+def generate_file_tree_local(path: str, depth: int, site: list):
+    """
+    递归打印文件目录树状图（使用局部变量）
+
+    :param path: 根目录路径
+    :param depth: 根目录、文件所在的层级号
+    :param site: 存储出现转折的层级号
+    :return: None
+    """
+    void_num = 0
+    filenames_list = os.listdir(path)
+
+    for item in filenames_list:
+        if '._' == item[:2]:
+            continue
+        string_list = ["│   " for _ in range(depth - void_num - len(site))]
+        for s in site:
+            string_list.insert(s, "    ")
+
+        if item != filenames_list[-1]:
+            string_list.append("├── ")
+        else:
+            # 本级目录最后一个文件：转折处
+            string_list.append("└── ")
+            void_num += 1
+            # 添加当前已出现转折的层级数
+            site.append(depth)
+        print("".join(string_list) + item)
+
+        new_item = path + '/' + item
+        if os.path.isdir(new_item):
+            generate_file_tree_local(new_item, depth + 1, site)
+        if item == filenames_list[-1]:
+            void_num -= 1
+            # 移除当前已出现转折的层级数
+            site.pop()
+
+
+class FileTree(object):
+    """
+    st = FileTree('/Users/li/Downloads/尚硅谷Docker实战教程（docker教程天花板）', '/Users/li/Downloads/工作簿1_out.xlsx').run()
+    """
+
+    def __init__(self, directory_path, to_excel_path):
+        """
+        directory_path:目录例如：'/Users/li/Downloads/2023.0619集团公司总部内控手册'
+        to_excel_path:保存为excel_path的路径 例如：'/Users/li/Downloads/工作簿1_out.xlsx'
+        header_title：标题 例如：["类型", "文件路径", "文件目录", "父级目录"]
+        """
+        self.directory_path = directory_path
+        self.to_excel_path = to_excel_path
+        self.data = []  # 替换为 np 或 pd
+        self.status = False
+
+    def _gain_directory(self, directory_path):
+        for root, dirs, files in os.walk(directory_path):
+            for file in files:
+                if '._' == file[:2] or '.DS_Store' == file:
+                    continue
+                p1 = str(root + '/' + file).replace(self.directory_path, '')
+                p2 = root.replace(self.directory_path, '')
+                pd_data = [
+                    "文件", p1.replace('/', '', 1) if '/' == p1[:1] else p1,
+                    file, p2.replace('/', '', 1) if '/' == p2[:1] else p2]
+                print(pd_data)
+                self.data.append(pd_data)
+            for dir_ in dirs:
+                if '._' == dir_[:2]:
+                    continue
+                p1 = str(root + '/' + dir_).replace(self.directory_path, '')
+                p2 = root.replace(self.directory_path, '')
+                pd_data = [
+                    "目录", p1.replace('/', '', 1) if '/' == p1[:1] else p1, dir_,
+                    p2.replace('/', '', 1) if '/' == p2[:1] else p2]
+                print(pd_data)
+                self.data.append(pd_data)
+        # return self.data
+
+    def _to_excel_file(self, data, to_excel_path):
+        pd.DataFrame(data).to_excel(to_excel_path, index=False, header=["类型", "文件路径", "文件目录", "父级目录"])
+        self.status = True
+        return self.status
+
+    def run(self):
+        self._gain_directory(self.directory_path)
+        return self._to_excel_file(np.array(self.data), self.to_excel_path)
+
+
+def _gain_directory(directory_path: str, content: list):
+    """
+    输入需要查找的地址：/Volumes/LaCie/MyWork
+    输入需要查找的内容：["科研"]
+    直接执行：_gain_directory('/Users/li/Downloads', ['k8s'])
+    """
+    for root, dirs, files in os.walk(directory_path):
+        for file in files:
+            for i in content:
+                if i in file:
+                    print(f'{root}/{file}')
+
+        for dir_ in dirs:
+            for i in content:
+                if i in dir_:
+                    print(f'{root}/{dir_}')

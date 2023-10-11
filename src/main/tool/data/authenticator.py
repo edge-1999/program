@@ -85,19 +85,20 @@ class Authenticator(object):
         else:
             return False
 
-# secret = 'li'
-# a = Authenticator(secret)
-# time_interval = 120
-# dq = int(time.time())
-# xg = (dq // time_interval + 1) * time_interval - dq
-# print(
-#     f'用户{secret}的口令 {a.def_check_totp(secret)} 有效期为{xg if len(str(xg)) == 3 else str(xg).rjust(3, "0")}秒')
 
-# while True:
-#     secret = 'li'
-#     time_interval = 120
-#     dq = int(time.time())
-#     xg = (dq // time_interval + 1) * time_interval - dq
-#     print(
-#         f'用户{secret}的口令 {a.def_check_totp(secret)} 有效期为{xg if len(str(xg)) == 3 else str(xg).rjust(3, "0")}秒')
-#     time.sleep(1)
+secret = 'li'
+a = Authenticator(secret)
+time_interval = 120
+dq = int(time.time())
+xg = (dq // time_interval + 1) * time_interval - dq
+print(
+    f'用户{secret}的口令 {a.def_check_totp(secret)} 有效期为{xg if len(str(xg)) == 3 else str(xg).rjust(3, "0")}秒')
+
+while True:
+    secret = 'li'
+    time_interval = 120
+    dq = int(time.time())
+    xg = (dq // time_interval + 1) * time_interval - dq
+    print(
+        f'用户{secret}的口令 {a.def_check_totp(secret)} 有效期为{xg if len(str(xg)) == 3 else str(xg).rjust(3, "0")}秒')
+    time.sleep(1)

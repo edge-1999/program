@@ -20,6 +20,6 @@ MYSQL_ENGINE = {
     "MYSQL_PORT": 3306,
     "MYSQL_USER": "root",
     "MYSQL_PASSWORD": "li19990929..",
-    "MYSQL_DATABASE": "tyc",
+    "MYSQL_DATABASE": "GAME_GENSHIN_IMPACT",
     "MYSQL_CHARSET": "utf8",
 }

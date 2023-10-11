@@ -136,3 +136,83 @@ git push origin master
 * python_siyuan       fd6a8e6 Merge remote-tracking branch 'origin/python_siyuan' into python_siyuan
   release             353f6a7 提交pandas基础操作笔记
 
+160 120 80 40 60 30
+
+
+160 - 30 = 130
+160 - 60 = 100
+160 - 90 = 70
+160 - 150 = 10
+
+
+
+
+hadoop 6.5
+
+brew tap adoptopenjdk/openjdk
+
+
+brew tap adoptopenjdk/openjdk
+
+
+Mac M1 操作系统环境下通过 brew 安装 Oracle 数据库，并且成功配置启动，需要做的操作步骤详细解释
+
+默认端口
+
+export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890
+
+
+1603869780@qq.com
+pass:qwe123QWE
+
+
+pip3 install cx_Oracle
+
+docker pull container-registry.oracle.com/database/free:latest
+
+-- 报表里面 条件的bug
+
+container-registry.oracle.com/database/free  7c64410c08d5
+
+
+docker run -d -p 1521:1521 --name oracle11g deepdiver/docker-oracle-xe-11g
+
+docker run -d -p 1521:1521 --hostname 0.0.0.0 --name oracle container-registry.oracle.com/database/free
+
+#在环境变量中设置默认使用linux/amd64平台
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+#重新启动镜像为容器（然后在此之前启动过并报了waring的，需要先将之前启动的容器删除
+docker run -d -p 1521:1521 --name oracle11g deepdiver/docker-oracle-xe-11g
+
+
+docker exec -it a8c9e6a05df67c9ff0dcdff48614a266a09d482a0b3a7d8f30841dbee889b0ef /bin/bash
+sqlplus system/oracle
+
+ssh-keygen -t rsa -C "lijd1999@icloud.com" -b 4096 -f /Users/li/system/mac/ssh/system_rsa.li
+
+cat ~/.ssh/id_dsa.pub | ssh hadoop@slave "umask 077; mkdir -p .ssh ; cat >> .ssh/authorized_keys" 127.0.0.1
+
+ssh-copy-id li@10.211.55.5
+
+cat ~/.ssh/id_rsa.pub | ssh 127.0.0.1 "umask 077; mkdir -p .ssh ; cat >> .ssh/authorized_keys"
+
+scp ~/.ssh.id_rsa root@192.168.1.165:root/~.ssh/
+
+vim /etc/supervisor/supervisord.conf
+
+yum install -y unzip zip
+
+unzip -d /temp test.zip
+
+unzip test.zip
+
+mv /test1/file1 /test3/file2
+
+export ORACLE_HOME=/u01/app/oracle/product/19.3/dbhome_1
+export DISPLAY=:0
+
+/Users/li/Downloads/test.xlsx
+Sheet1
+SYSTEM_DATA_STRUCTURE
+
+C:\Program Files\MaHou.PDMReader
