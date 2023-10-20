@@ -5,6 +5,7 @@ from decimal import Decimal
 import numpy as np
 import pandas as pd
 from docx import Document
+import yaml
 
 
 class FileOperations(object):
@@ -545,3 +546,35 @@ def _gain_directory(directory_path: str, content: list):
             for i in content:
                 if i in dir_:
                     print(f'{root}/{dir_}')
+
+
+def yaml_generator(file_path):
+    """生成器读取yaml文件"""
+    with open(file_path, 'r') as file:
+        for line in file:
+            yield yaml.safe_load(line)
+
+
+class YamlIterator:
+    """迭代器读取yaml文件"""
+
+    def __init__(self, file_path):
+        self.file_path = file_path
+
+    def __iter__(self):
+        with open(self.file_path, 'r') as file:
+            for line in file:
+                yield yaml.safe_load(line)
+
+
+def yaml_generator_load(file_path):
+    """读取yaml文件"""
+    with open(file_path, 'r') as yaml_file:
+        return yaml.safe_load(yaml_file)
+
+
+def yaml_generator_wri(file_path, data):
+    """写入yaml文件"""
+    with open(file_path, 'w') as yaml_file:
+        yaml.dump(data, yaml_file)
+
