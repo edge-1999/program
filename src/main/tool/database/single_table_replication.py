@@ -110,7 +110,3 @@ def main():
     # 或者使用 copy_data_multiprocess() 复制数据
     # copy_data_multiprocess()
     print(f"数据表 author.{src_table_name} 成功复制到数据表 {dst_table_name}")
-
-
-if __name__ == "__main__":
-    main()

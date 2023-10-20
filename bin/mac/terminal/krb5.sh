@@ -1,0 +1,5 @@
+export PATH="/opt/homebrew/opt/krb5/bin:$PATH"
+export PATH="/opt/homebrew/opt/krb5/sbin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/krb5/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/krb5/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/krb5/lib/pkgconfig"
