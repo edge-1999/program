@@ -1,0 +1,18 @@
+version: '3'
+services:
+  program-mongo-arm:
+    build: .
+    image: program-mongo-arm:v1
+    container_name: program-mongo-arm-v1
+    ports:
+      - "27019:27017"
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: li19990929..
+    volumes:
+      - /Users/Shared/program/data/docker/program/4_very/database/nosql/mongo/arm:/data/db
+      - /Users/Shared/program/logs/docker/program/4_very/database/nosql/mongo/arm:/var/log/mongodb
+#      - /Users/Shared/program/env/docker/program/4_very/database/nosql/mongo/arm/mongod.conf:/data/configdb/mongod.conf
+#      - /Users/Shared/docker/data/mongo/mongo-backup:/backup
+      - /Users/Shared/docker/data/mongo/mongod-config/mongod.conf:/etc/mongod.conf
+    command: mongod --config /etc/mongod.conf

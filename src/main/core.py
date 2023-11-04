@@ -43,13 +43,16 @@ except Exception as e:
 if __name__ == '__main__':
     try:
         console.print("--> 初始化完成开始启动\n", style="bold blue")
+        # from tool.file.renaming_files_under_a_folder import FileRenamer
+        # renamer = FileRenamer('/Users/li/Downloads/ni 20231022', '20231022')
+        # renamer.run()
         # from tool import random_password
         # random_password()
-        from tool.database.mysql_tool import OperationMysqlData
-        from src.config import MYSQL_ENGINE
-        path = '/Users/li/Downloads/目标_角色_面板.csv'
-        OperationMysqlData(MYSQL_ENGINE).write_data(
-            filepath=path, chunk_size=1000, table_name='目标_角色_面板', )
+        # from tool.database.mysql_tool import OperationMysqlData
+        # from src.config import MYSQL_ENGINE
+        # path = '/Users/li/Downloads/目标_角色_面板.csv'
+        # OperationMysqlData(MYSQL_ENGINE).write_data(
+        #     filepath=path, chunk_size=1000, table_name='目标_角色_面板', )
         # judgment_data = "01.000000000000000009we123-er"  # 处理的数据
         # _, data = fahrenheit_celsius(judgment_data, else_unit=['-'], numerical_not_unit='1')
         # print(f"{judgment_data} ->\n    {_} : {data}")

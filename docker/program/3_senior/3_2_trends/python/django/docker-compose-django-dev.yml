@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  django:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - /Users/Shared/entirely_dev:/entirely
+    ports:
+      - "8002:8000"
+    depends_on:
+      - mysql
+    networks:
+      - entirely
+    environment:
+      - DEBUG=True

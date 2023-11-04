@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  jupyter-notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8888:8888"
+    volumes:
+      - /Users/Shared/program:/program # 共享代码目录
+      - /Users/Shared/program/env/docker/jupyter:/etc/jupyter # Jupyter配置文件目录
+      - /Users/Shared/program/logs/docker/jupyter:/var/log/jupyter # 日志目录

@@ -1,0 +1,41 @@
+version: '3'
+services:
+#  mongo:
+#    image: mongo:4.4
+#    container_name: mongo-container
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: li19990929..
+#    ports:
+#      - "27018:27017"
+  mongo-t:
+    build: .
+    image: entirely-mongo-t:v1
+    container_name: entirely-mongo-t
+    ports:
+      - "27019:27017"
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: li19990929..
+    volumes:
+      - /Users/Shared/docker/data/mongo/mongo-data:/data/db
+      - /Users/Shared/docker/data/mongo/mongo-logs:/var/log/mongodb
+      - /Users/Shared/docker/data/mongo/mongo-configdb:/data/configdb
+      - /Users/Shared/docker/data/mongo/mongo-backup:/backup
+      - /Users/Shared/docker/data/mongo/mongod-config/mongod.conf:/etc/mongod.conf
+    command: mongod --config /etc/mongod.conf
+#  mongo-a:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile.mongo
+#    image: custom-mongo:latest
+#    container_name: custom-mongo-container
+#    ports:
+#      - "27017:27017"
+#    volumes:
+#      - /Users/Shared/docker/data/mongo/mongo-data:/data/db
+#      - /Users/Shared/docker/data/mongo/mongo-config:/data/configdb
+#      - /Users/Shared/docker/data/mongo/mongo-logs:/var/log/mongodb
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: li19990929..

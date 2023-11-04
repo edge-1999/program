@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  program-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: program-python-arm:v1
+    container_name: program-python-arm
+    networks:
+      - program
+
+networks:
+  program:
+    driver: bridge

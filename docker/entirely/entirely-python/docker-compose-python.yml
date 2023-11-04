@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+#  python-dev:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile  # path to your Dockerfile
+#    ports:
+#      - "8022:22"  # Expose SSH to a custom port to avoid conflicts with host SSH
+#    volumes:
+#      - /Users/Shared/program/docker/entirely/entirely-python:/entirely  # Change the path to your actual code directory on host
+  python-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /Users/Shared/program/docker/entirely/entirely-python:/entirely
+    working_dir: /entirely
+    ports:
+      - "8022:22"  # Expose SSH to a custom port to avoid conflicts with host SSH

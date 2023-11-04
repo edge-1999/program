@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  django:
+    build: .
+    image: program-django-arm:v1
+    container_name: program-django-arm-v1
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - /Users/Shared/entirely_dev:/entirely
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True

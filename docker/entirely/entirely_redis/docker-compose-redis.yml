@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  redis-service:
+    build: .
+    image: entirely-redis:v1
+    container_name: entirely-redis
+    ports:
+      - "16379:6379"
+    volumes:
+      - /Users/Shared/docker/data/redis/data:/data
+      - /Users/Shared/docker/data/redis/config:/usr/local/etc/redis

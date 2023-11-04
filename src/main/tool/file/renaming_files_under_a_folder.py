@@ -67,7 +67,7 @@ class FileRenamer:
         return file_count, folder_count
 
     def main_folder_rename(self):
-        new_folder_name = '{} {}'.format('F_OP', self.format_time)
+        new_folder_name = '{} {}'.format(input('请输入自定义文件夹名称：'), self.format_time)
         new_folder = os.path.join(self.folder_work_path, new_folder_name)
         if exists_path(new_folder):
             raise '文件夹存在，请重新输入'
@@ -77,8 +77,8 @@ class FileRenamer:
 
     def run(self):
         # 当前输入文件夹是否重新命名
-        mark = input('当前文件夹是否重命名(输入Y|y)：')[0].upper()
-        if mark == "Y":
+        mark = input('当前文件夹是否重命名(输入Y|y)：').upper()
+        if mark and mark[0] == "Y":
             self.main_folder_rename()
         file_count, folder_count = self.count_files_and_folders
         if file_count > 0:

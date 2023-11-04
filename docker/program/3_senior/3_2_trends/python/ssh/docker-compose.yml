@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  program-python:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: program-python:v4
+    container_name: program-python
+    ports:
+      - "19990:22"
+      - "19991:8888"
+    volumes:
+      - /Users/Shared/program:/program # 共享代码目录
+      - /Users/Shared/program/env/docker/tool/jupyter/arm64:/etc/jupyter # Jupyter配置文件目录
+      - /Users/Shared/program/logs/docker/tool/jupyter:/var/log/jupyter # 日志目录
+    networks:
+      - program
+#    user: "0"
+
+networks:
+  program:
+    driver: bridge

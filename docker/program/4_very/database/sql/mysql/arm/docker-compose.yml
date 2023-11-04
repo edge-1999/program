@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  program-mysql-arm:
+    build: .
+    image: program-mysql-arm:v1
+    container_name: program-mysql-arm-v1
+    #    environment:
+    #      MYSQL_ROOT_PASSWORD: li19990929..
+    ports:
+      - "13306:3306"
+    volumes:
+      - /Users/Shared/docker/data/mysql/test/mysql-data:/var/lib/mysql
+      - /Users/Shared/docker/data/mysql/test/mysql-logs:/var/log/mysql
+      - /Users/Shared/docker/data/mysql/test/mysql-config:/etc/mysql/conf.d
+      - /Users/Shared/docker/data/mysql/test/mysql-init-scripts:/docker-entrypoint-initdb.d
+      - /Users/Shared/docker/data/mysql/test/mysql-certs:/etc/mysql/certificates
+      - /Users/Shared/docker/data/mysql/test/mysql-backups:/var/backups/mysql
+#  entirely-mysql-backups:
+#    build: ./entirely_mysql
+#    image: entirely-mysql:v1
+#    container_name: entirely-mysql-backups
+#    ports:
+#      - "13307:3306"
+#    volumes:
+#      - /Users/Shared/docker/data/mysql/test/mysql-data:/var/lib/mysql
+#      - /Users/Shared/docker/data/mysql/test/mysql-logs:/var/log/mysql
+#      - /Users/Shared/docker/data/mysql/test/mysql-config:/etc/mysql/conf.d
+#      - /Users/Shared/docker/data/mysql/test/mysql-init-scripts:/docker-entrypoint-initdb.d
+#      - /Users/Shared/docker/data/mysql/test/mysql-certs:/etc/mysql/certificates
+#      - /Users/Shared/docker/data/mysql/test/mysql-backups:/var/backups/mysql

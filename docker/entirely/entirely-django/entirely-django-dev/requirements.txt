@@ -1,0 +1,11 @@
+django
+django-redis
+django-ckeditor
+django-cors-headers
+django-import-export
+django-js-asset
+django-mdeditor
+django-rest-framework
+django-simpleui
+djangorestframework
+simplepro

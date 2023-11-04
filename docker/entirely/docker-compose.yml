@@ -1,0 +1,82 @@
+version: '3'
+
+services:
+  entirely-mysql:
+    build: ./entirely_mysql
+    image: entirely-mysql:v1
+    container_name: entirely-mysql
+    ports:
+      - "13306:3306"
+    volumes:
+      - /Users/Shared/docker/data/mysql/test/mysql-data:/var/lib/mysql
+      - /Users/Shared/docker/data/mysql/test/mysql-logs:/var/log/mysql
+      - /Users/Shared/docker/data/mysql/test/mysql-config:/etc/mysql/conf.d
+      - /Users/Shared/docker/data/mysql/test/mysql-init-scripts:/docker-entrypoint-initdb.d
+      - /Users/Shared/docker/data/mysql/test/mysql-certs:/etc/mysql/certificates
+      - /Users/Shared/docker/data/mysql/test/mysql-backups:/var/backups/mysql
+    networks:
+      - entirely
+  entirely-redis:
+    build: ./entirely_redis
+    image: entirely-redis:v1
+    container_name: entirely-redis
+    ports:
+      - "16379:6379"
+    volumes:
+      - /Users/Shared/docker/data/redis/data:/data
+      - /Users/Shared/docker/data/redis/config:/usr/local/etc/redis
+    networks:
+      - entirely
+  entirely-mongo:
+    build: ./entirely_mongo
+    image: entirely-mongo:v1
+    container_name: entirely-mongo
+    ports:
+      - "27018:27017"
+    volumes:
+      - /Users/Shared/docker/data/mongo/mongo-data:/data/db
+      - /Users/Shared/docker/data/mongo/mongo-logs:/var/log/mongodb
+      - /Users/Shared/docker/data/mongo/mongo-configdb:/data/configdb
+      - /Users/Shared/docker/data/mongo/mongo-backup:/backup
+      - /Users/Shared/docker/data/mongo/mongod-config/mongod.conf:/etc/mongod.conf
+    networks:
+      - entirely
+    command: mongod --config /etc/mongod.conf
+  entirely-notebook:
+    build:
+      context: ./entirely-jupyter
+      dockerfile: Dockerfile
+    image: entirely-notebook:v1
+    container_name: entirely-notebook
+    ports:
+      - "8888:8888"
+    volumes:
+      - /Users/Shared/program:/program # 共享代码目录
+      - /Users/Shared/program/env/docker/jupyter:/etc/jupyter # Jupyter配置文件目录
+      - /Users/Shared/program/logs/docker/jupyter:/var/log/jupyter # 日志目录
+    networks:
+      - entirely
+  entirely-django:
+    build:
+      context: ./entirely-django/entirely-django-dev
+      dockerfile: Dockerfile
+    image: entirely-django:v1
+    container_name: entirely-django
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - /Users/Shared/entirely_dev:/entirely
+    ports:
+      - "8000:8000"
+    depends_on:
+      - entirely-mysql
+      - entirely-redis
+      - entirely-mongo
+    networks:
+      - entirely
+    environment:
+      - DEBUG=True
+
+
+networks:
+  entirely:
+    driver: bridge

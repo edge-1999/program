@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  program-redis-arm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: program-redis-arm:v1
+    container_name: program-redis-arm-v1
+    ports:
+      - "6379:6379"
+    volumes:
+      - /Users/Shared/program/data/docker/program/4_very/database/nosql/redis/arm:/data
+      - /Users/Shared/program/env/docker/program/4_very/database/nosql/redis/mac/arm64/redis.conf:/usr/local/etc/redis/redis.conf
+#      -       - ./redis.conf:/usr/local/etc/redis/redis.conf

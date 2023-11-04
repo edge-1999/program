@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  program-mysql-arm:
+    build:
+      context: ./4_very/database/sql/mysql/arm
+      dockerfile: Dockerfile
+    image: program-mysql-arm:v1
+    container_name: program-mysql-arm-v1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../../data/docker/program/4_very/database/sql/mysql/arm/mysql-data:/var/lib/mysql
+      - ../../logs/docker/program/4_very/database/sql/mysql/logs:/var/log/mysql
+      - ../../env/docker/program/4_very/database/sql/mysql/config:/etc/mysql/conf.d
+    networks:
+      - program
+
+  program-redis-arm:
+    build:
+      context: ./4_very/database/nosql/redis/arm
+      dockerfile: Dockerfile
+    image: program-redis-arm:v1
+    container_name: program-redis-arm-v1
+    ports:
+      - "6379:6379"
+    volumes:
+      - ../../data/docker/program/4_very/database/nosql/redis/arm:/data
+      - ../../env/docker/program/4_very/database/nosql/redis/mac/arm64/redis.conf:/usr/local/etc/redis/redis.conf
+    networks:
+      - program
+
+  program-mongo-arm:
+    build:
+      context: ./4_very/database/nosql/mongo/arm
+      dockerfile: Dockerfile
+    image: program-mongo-arm:v1
+    container_name: program-mongo-arm-v1
+    ports:
+      - "27017:27017"
+    volumes:
+      - ../../data/docker/program/4_very/database/nosql/mongo/arm:/data/db
+      - ../../logs/docker/program/4_very/database/nosql/mongo/arm:/var/log/mongodb
+      - ../../env/docker/program/4_very/database/nosql/mongo/arm/mongod.conf:/etc/mongod.conf
+    command: mongod --config /etc/mongod.conf
+
+  program-jupyterlab-arm:
+    build:
+      context: ./3_senior/3_2_trends/python/jupyter_lab/arm
+      dockerfile: Dockerfile
+    image: program-jupyterlab-arm:v1
+    container_name: program-jupyterlab-arm-v1
+    ports:
+      - "8888:8888"
+    volumes:
+      - ../../:/program
+      - ../../logs/docker/program/3_senior/3_2_trends/python/jupyter_lab:/var/log/jupyter
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+    networks:
+      - program
+
+  program-django-arm:
+    build: ./3_senior/3_2_trends/python/django/arm
+    image: program-django-arm:v1
+    container_name: program-django-arm-v1
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - /Users/Shared/entirely_dev:/entirely
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=True
+    networks:
+      - program
+    depends_on:
+      - program-redis-arm
+      - program-mysql-arm
+      - program-mongo-arm
+
+networks:
+  program:
+    driver: bridge
+

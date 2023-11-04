@@ -1,0 +1,23 @@
+databases:
+  mongo:
+    mac:
+      host: localhost
+      name:
+      - Mac
+      - Mac1
+      password: li19990929..
+      port: 3306
+      username: root
+  mysql:
+    mac:
+      host: localhost
+      name: Mac
+      password: li19990929..
+      port: 3306
+      username: root
+    mac1:
+      host: localhost
+      name: Mac
+      password: li19990929..
+      port: 3306
+      username: root

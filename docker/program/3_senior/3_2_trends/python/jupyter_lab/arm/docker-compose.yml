@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  program-jupyterlab-arm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: program-jupyterlab-arm:v1
+    container_name: program-jupyterlab-arm-v1
+    ports:
+      - "8888:8888"
+    volumes:
+      - /Users/Shared/program:/program # 共享代码目录
+      #- /Users/Shared/program/env/docker/program/3_senior/3_2_trends/python/jupyter_lab:/etc/jupyter # Jupyter配置文件目录
+      #- /Users/Shared/program/env/docker/program/3_senior/3_2_trends/python/jupyter_lab:/home/jovyan/.jupyter/
+      - /Users/Shared/program/logs/docker/program/3_senior/3_2_trends/python/jupyter_lab:/var/log/jupyter # 日志目录
+    environment:
+      - JUPYTER_ENABLE_LAB=yes
+#    networks:
+#      - program
+##    user: "0"
+#
+#networks:
+#  program:
+#    driver: bridge
