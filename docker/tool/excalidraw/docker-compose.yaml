@@ -1,0 +1,25 @@
+name: program-excalidraw
+services:
+  excalidraw:
+    container_name: program-excalidraw
+    deploy:
+      restart_policy:
+        condition: always
+    healthcheck:
+      disable: true
+      test:
+    image: excalidraw/excalidraw
+    labels:
+      com.docker.desktop.extension: "true"
+      com.docker.desktop.extension.name: Excalidraw
+    networks:
+      default: null
+    ports:
+    - mode: ingress
+      target: 80
+      published: "9721"
+      protocol: tcp
+    restart: on-failure
+networks:
+  default:
+    name: ivancurkovic046_excalidraw-docker-extension-desktop-extension_default

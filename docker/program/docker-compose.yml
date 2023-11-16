@@ -43,6 +43,8 @@ services:
       - ../../logs/docker/program/4_very/database/nosql/mongo/arm:/var/log/mongodb
       - ../../env/docker/program/4_very/database/nosql/mongo/arm/mongod.conf:/etc/mongod.conf
     command: mongod --config /etc/mongod.conf
+    networks:
+      - program
 
   program-jupyterlab-arm:
     build:
@@ -81,4 +83,3 @@ services:
 networks:
   program:
     driver: bridge
-

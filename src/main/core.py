@@ -57,11 +57,12 @@ if __name__ == '__main__':
         # _, data = fahrenheit_celsius(judgment_data, else_unit=['-'], numerical_not_unit='1')
         # print(f"{judgment_data} ->\n    {_} : {data}")
 
-        # from tool.file.file import FolderOperations
+        from tool.file.file import FolderOperations
 
         # OperationMysqlData(MYSQL_ENGINE).write_data('/Users/li/Downloads/洞天.csv', 1000, '洞天')
 
         # FolderOperations('/Volumes/LaCie/MyWork/Pcitc').def_folder_remove_file_junk()
+        FolderOperations('/Users/li/Downloads/附件5').def_folder_search_content()
 
         pass
     except Exception as e:

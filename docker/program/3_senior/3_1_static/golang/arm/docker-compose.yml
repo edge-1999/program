@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  program-golang-arm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: program-golang-arm:v1
+    container_name: program-golang-arm-v1
+    ports:
+      - "3306:3306"
+    volumes:
+      - ../../data/docker/program/4_very/database/sql/mysql/arm/mysql-data:/var/lib/mysql
