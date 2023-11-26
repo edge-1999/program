@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  program-javascript-arm:
+    build: .
+    image: program-javascript-arm:v1
+    container_name: program-javascript-arm-v1
+    environment:
+      - NODE_ENV=development
+    ports:
+      - "3000:3000"

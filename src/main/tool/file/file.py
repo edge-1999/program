@@ -1,6 +1,7 @@
 import json
 import os
 from decimal import Decimal
+import subprocess
 
 import numpy as np
 import pandas as pd
@@ -149,6 +150,40 @@ class FileOperations(object):
             self.identifying = False
             self.error_message.append(f'执行 txt 文件搜索操作时报错，当前文件 {self.file_path} 报错信息为：{e}')
 
+    def def_sql_search_for_manipulate(self, search_data):
+        try:
+            if len(self.file_path) > 3 and self.file_path[-4:].upper() == '.SQL':
+                with open(self.file_path, 'r', encoding='utf', errors='ignore') as f:
+                    for line in f:
+                        for i in search_data:
+                            if i in line:
+                                self.identifying = True
+                                return self.identifying
+                                # yield self.file_path
+            self.identifying = False
+            self.error_message.append(
+                f'执行 sql 文件搜索操作时报错，当前文件 {self.file_path} 报错信息为：此文件不是 sql 类型文件')
+        except Exception as e:
+            self.identifying = False
+            self.error_message.append(f'执行 sql 文件搜索操作时报错，当前文件 {self.file_path} 报错信息为：{e}')
+
+    def def_sh_search_for_manipulate(self, search_data):
+        try:
+            if len(self.file_path) > 3 and self.file_path[-4:].upper() == '.SH':
+                with open(self.file_path, 'r', encoding='utf', errors='ignore') as f:
+                    for line in f:
+                        for i in search_data:
+                            if i in line:
+                                self.identifying = True
+                                return self.identifying
+                                # yield self.file_path
+            self.identifying = False
+            self.error_message.append(
+                f'执行 sh 文件搜索操作时报错，当前文件 {self.file_path} 报错信息为：此文件不是 sh 类型文件')
+        except Exception as e:
+            self.identifying = False
+            self.error_message.append(f'执行 sh 文件搜索操作时报错，当前文件 {self.file_path} 报错信息为：{e}')
+
     @property
     def def_file_filter_junk(self) -> bool:
         """判断文件是否是垃圾文件"""
@@ -289,6 +324,9 @@ class FolderOperations(object):
         except Exception as e:
             self.error_message.append(f'当前文件夹 {self.folder_path} 报错信息为：{e}')
 
+    def reveal_file_in_finder(self, file_path):
+        subprocess.run(["open", "-R", file_path])
+
     def def_folder_search_content(self):
         """搜索文件夹下文件包含搜索内容的文件"""
         if self.identifying:
@@ -330,11 +368,30 @@ class FolderOperations(object):
                                 elif file_manipulate.file_path[-4:].lower() == ".csv":
                                     if file_manipulate.def_csv_search_for_manipulate(search_content):
                                         set_path.add(file_manipulate.file_path)
+                                elif file_manipulate.file_path[-4:].lower() == ".sql":
+                                    if file_manipulate.def_sql_search_for_manipulate(search_content):
+                                        set_path.add(file_manipulate.file_path)
+                                elif file_manipulate.file_path[-3:].lower() == ".sh":
+                                    if file_manipulate.def_sh_search_for_manipulate(search_content):
+                                        set_path.add(file_manipulate.file_path)
 
                 if len(set_path):
-                    print(f'\n>>> 一共{len(set_path)}文件')
-                    for file_name in set_path:
-                        print(f'【{file_name}】')
+                    print('\n>>> 一共{}文件如下所示 >>> \n\t{}'.format(
+                        len(set_path), '\n\t'.join(file_name for file_name in set_path)))
+                    self.identifying = True
+                    while self.identifying:
+                        determining_the_folder_where_the_file_is_located = input('是否打开文件 y|Y ，直接回车跳过>>> ')
+                        if determining_the_folder_where_the_file_is_located:
+                            if determining_the_folder_where_the_file_is_located[0].upper() == 'Y':
+                                file_path_open_ = input('请输入打开文件的路径')
+                                if file_path_open_ in set_path:
+                                    self.reveal_file_in_finder(file_path_open_)
+                                else:
+                                    print('请输入展示中的文件路径 >>> \n\t{}'.format(
+                                        '\n\t'.join(file_name for file_name in set_path)))
+                        else:
+                            self.identifying = False
+
                 else:
                     print(f"\n在路径【{self.folder_path}】中未找到含有【{' '.join(search_content)}】内容的文件")
 
@@ -577,4 +634,3 @@ def yaml_generator_wri(file_path, data):
     """写入yaml文件"""
     with open(file_path, 'w') as yaml_file:
         yaml.dump(data, yaml_file)
-

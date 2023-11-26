@@ -62,7 +62,7 @@ if __name__ == '__main__':
         # OperationMysqlData(MYSQL_ENGINE).write_data('/Users/li/Downloads/洞天.csv', 1000, '洞天')
 
         # FolderOperations('/Volumes/LaCie/MyWork/Pcitc').def_folder_remove_file_junk()
-        FolderOperations('/Users/li/Downloads/附件5').def_folder_search_content()
+        FolderOperations('/Users/li/Downloads/_02_业务对象').def_folder_search_content()
 
         pass
     except Exception as e:
